@@ -1477,7 +1477,7 @@ class KlimaLoggConfEditor(weewx.drivers.AbstractConfEditor):
     polling_interval = 10
 
     # Sensors labels can have 1-10 upper-case alphanumeric characters or
-    # the characters: space - + ( ) * , . / \ o
+    # the characters: space - + ( ) * , . / \\ o
     # Sensor labels cannot be specified for non-present sensors.
     #sensor_text1 = "5565 BED1"
     #sensor_text2 = "6DDF LAUN"
@@ -2235,7 +2235,7 @@ class Decode(object):
                ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
                ' ', ' ', ' ', '@')
 
-    CHARSTR = "!1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ-+()o*,/\ ."
+    CHARSTR = "!1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ-+()o*,/\\ ."
 
     @staticmethod
     def toCharacters3_2(buf, start, startOnHiNibble):
@@ -4134,7 +4134,7 @@ class CommunicationService(object):
         self.running = False
         logdbg('stopRFThread: waiting for RF thread to terminate')
         self.child.join(self.thread_wait)
-        if self.child.isAlive():
+        if self.child.is_alive():
             logerr('unable to terminate RF thread after %d seconds' %
                    self.thread_wait)
         else:
